@@ -29,9 +29,8 @@ class TIMUIKitProfileUserInfoCard extends TIMUIKitStatelessWidget {
     final signature = userInfo?.selfSignature;
     final showName = nickName != "" ? nickName : userInfo?.userID;
     final option1 = signature;
-    final signatureText = option1 != null
-        ? TIM_t_para("个性签名: {{option1}}", "个性签名: $option1")(option1: option1)
-        : TIM_t("暂无个性签名");
+    final signatureText =
+        option1 != null ? TIM_t_para("个性签名: {{option1}}", "个性签名: $option1")(option1: option1) : TIM_t("暂无个性签名");
 
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
@@ -73,21 +72,21 @@ class TIMUIKitProfileUserInfoCard extends TIMUIKitStatelessWidget {
                         "ID:  ",
                         style: TextStyle(fontSize: 13, color: theme.weakTextColor),
                       ),
-                      SelectableText(
-                        userInfo?.userID ?? "",
-                        style: TextStyle(fontSize: 13, color: theme.weakTextColor),
+                      Expanded(
+                        child: SelectableText(
+                          userInfo?.userID ?? "",
+                          style: TextStyle(fontSize: 13, color: theme.weakTextColor),
+                          maxLines: 1,
+                        ),
                       ),
                     ],
                   ),
                 ),
-                Text(signatureText,
-                    style: TextStyle(fontSize: 13, color: theme.weakTextColor))
+                Text(signatureText, style: TextStyle(fontSize: 13, color: theme.weakTextColor))
               ],
             ),
           ),
-          showArrowRightIcon
-              ? const Icon(Icons.keyboard_arrow_right)
-              : Container()
+          showArrowRightIcon ? const Icon(Icons.keyboard_arrow_right) : Container()
         ],
       ),
     );
